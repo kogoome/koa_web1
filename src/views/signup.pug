@@ -1,0 +1,24 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+  body 
+    h1 회원가입
+    h3 1. db connection
+    h3 2. TODO vaild check
+    h3 3. jwt setting
+    form(action="#signup")
+      div
+        label 이메일
+          input(type="text" name="email")
+      div
+        label 아이디
+          input(type="text" name="id")
+      div
+        label 비밀번호
+          input(type="text" name="pw")
+      div
+        input(type="submit" value="submit")

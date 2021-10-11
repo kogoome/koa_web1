@@ -31,8 +31,6 @@ router.get('', async (ctx) => {
   await ctx.render('index')
 })
 router.use('/', api.routes())
-router.get('/signin', async (ctx) => {
-  await ctx.render('signin')
-})
+
 
 module.exports = app
