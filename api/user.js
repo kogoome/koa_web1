@@ -2,14 +2,15 @@ const bcrypt = require('bcrypt')
 const { User } = require('../mongoose/model')
 
 // 회원가입 /acount/signup
-const userSignup = async (req, res) => {
-  const { email, weeksomId, passwordConfirm, nickname } = req.body
+const userSignup = async (ctx, next) => {
+  const { email, id, pw, nickname } = ctx.body
   // 비밀번호 해시값으로 변경( 사용법은 exam > bcryptTest.js참고 )
-  const hashedPassword = await bcrypt.hashSync(passwordConfirm, 10)
-  const newUser = await User({ email, weeksomId, hashedPassword, nickname })
+  const hashedPw = await bcrypt.hashSync(pw, 10)
+  const newUser = await User({ email, id, hashedPw, nickname })
   const saveRequest = await newUser.save() // 디비에 저장하면 저장된 데이터 리턴
   console.log(saveRequest)
-  res.send(saveRequest)
+  ctx.send(saveRequest)
+  next()
 }
 
 // 프로필 유져 검색 /profile/:weeksomid

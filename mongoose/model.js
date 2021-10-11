@@ -33,29 +33,6 @@ const model = (() => {
     model[key] = mongoose.model(key, schema[key])
   }
   return model
-})() //함수 이후 ()붙이면 즉시실행함수
-
-/** 즉시실행함수란 
-
-function main() {
-  // 함수내용
-} // 작성된 함수
-
-main() // 함수실행
-
-// 이걸 람다식으로 바꾸게 되면
-
-const main = () => {
-  // 함수내용
-} // 함수작성
-main() // 함수실행
-
-// 이걸 다음과같이 쓸 수 있다
-
-const main = (() => {
-  // 함수내용
-})() // 즉시실행함수 : main을 호출하는 즉시 실행
-
-*/
+})()
 
 module.exports = model

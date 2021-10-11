@@ -10,6 +10,11 @@ exports.params = (ctx) => {
 exports.signin = async (ctx) => {
   await ctx.render('signin')
 }
-exports.signup = async (ctx) => {
+exports.get_signup = async (ctx) => {
+  await ctx.render('signup')
+}
+
+// exports.signup_db = User.userSignup
+exports.post_signup_render = async (ctx) => {
   await ctx.render('signup')
 }
