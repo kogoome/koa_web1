@@ -8,6 +8,7 @@ const Router = require('koa-router')
 const serve = require('koa-static')
 const mount = require('koa-mount')
 const websockify = require('koa-websocket')
+const bodyparser = require('koa-bodyparser')
 
 const app = websockify(new Koa())
 const router = new Router()
@@ -23,14 +24,14 @@ new Pug({
 
 // css, js마운트
 app.use(mount('/public', serve('src/public')))
-
 // api 라우트를 /api 경로 하위 라우트로 설정
 app.use(router.routes()).use(router.allowedMethods())
+// 바디파서
+app.use(bodyparser())
 
 router.get('', async (ctx) => {
   await ctx.render('index')
 })
 router.use('/', api.routes())
-
 
 module.exports = app
